@@ -1,0 +1,22 @@
+<mat-table [dataSource]="dataSource" [class.isMobile]="isMobile" #table>
+    
+    <ng-template ngFor let-item  [ngForOf]="itens" let-i="index">
+        <ng-container matColumnDef="{{ item.columnName }}">
+            <mat-header-cell [ngStyle]="changeStyle(item)" class="truncate-cell"  *matHeaderCellDef> {{ item.headerName }}</mat-header-cell>
+            <mat-cell [ngStyle]="changeStyle(item)" class="truncate-cell" *matCellDef="let element">
+                <span class="mobile-label">{{ item.headerMobile || item.headerName }}: </span>
+                <span>{{ element[item.columnName] }}</span>
+            </mat-cell>
+        </ng-container>
+    </ng-template>
+
+    <mat-header-row *matHeaderRowDef="displayColumns; sticky: true"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayColumns;" 
+            (click)="onRowClicked(row)"></mat-row>
+</mat-table>
+
+<mat-paginator  
+    [pageSizeOptions]="paginatorSize" 
+    showFirstLastButtons>
+</mat-paginator>
+

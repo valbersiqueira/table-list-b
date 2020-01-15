@@ -1,0 +1,18 @@
+<table class="table">
+    <thead>
+        <tr>
+        <ng-template ngFor let-item [ngForOf]="itens">
+            <th>{{ item }}</th>
+        </ng-template>
+    </tr>
+    </thead>
+    <tbody>
+        <ng-template ngFor let-item [ngForOf]="columns" let-i="index">
+            <tr>
+                <ng-template ngFor let-data [ngForOf]="item.list">
+                    <td>{{ data.dataName }} </td>
+                </ng-template>
+            </tr>
+        </ng-template>
+    </tbody>
+</table>
